@@ -1,0 +1,29 @@
+### TAG
+## createTag
+POST {{host}}/tag
+Content-Type: application/json
+
+{
+  "name": "example"
+}
+> {%
+client.global.set("id", response.body.id);
+
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 200");
+});
+%}
+###
+## findAllTags
+GET {{host}}/tag
+#Accept: application/json
+
+###
+## findOneTag
+GET {{host}}/tag/{{id}}
+#Accept: application/json
+
+###
+## removeTag
+DELETE {{host}}/tag/{{id}}
+Accept: application/json
